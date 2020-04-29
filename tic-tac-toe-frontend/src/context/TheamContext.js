@@ -8,10 +8,8 @@ const ThemeContext = React.createContext({
 export default ThemeContext;
 
 export function ThemeProvider (props) {
-  // keeps state of the current theme
   const [dark, setDark] = useState(false);
   
-  // paints the app before it renders elements
   useLayoutEffect(() => {
     const lastTheme = window.localStorage.getItem('darkTheme');
     
@@ -22,10 +20,8 @@ export function ThemeProvider (props) {
       setDark(false);
       applyTheme(lightTheme);
     } 
-  // if state changes, repaints the app
   }, [dark]);
 
-  // rewrites set of css variablels/colors
   const applyTheme = theme => {
     const root = document.getElementsByTagName('html')[0];
     root.style.cssText = theme.join(';');
@@ -34,7 +30,6 @@ export function ThemeProvider (props) {
   const toggle = () => {
     const body = document.getElementsByTagName('body')[0];
     body.style.cssText = 'transition: background .5s ease';
-
     setDark(!dark);
     window.localStorage.setItem('darkTheme', !dark);
   };
@@ -52,23 +47,15 @@ export function ThemeProvider (props) {
 
 // styles
 const lightTheme = [
-  '--border: rgba(0,0,0,.2)',
-  '--shadow: #000',
-  '--heading: rgba(255,100,0,1)',
-  '--main: #1d8f13',
-  '--text: #000',
-  '--textAlt: #fff',
-  '--inactive: rgba(0,0,0,.3)',
-  '--background: white',
+  '--app-background: white',
+  '--tile-color: #218186',
+  '--tile-shadow: 1px 1px 20px 0px #64cbdc78',
+  '--tile-active: 1px 1px 20px 10px #41dede',
 ];
 
 const darkTheme = [
-  '--border: rgba(255,255,255,.1)',
-  '--shadow: #000',
-  '--heading: rgba(255,255,5,.9)',
-  '--main: #79248f',
-  '--text: rgb(255, 255, 255)',
-  '--textAlt: #fff',
-  '--inactive: rgba(255,255,255,.3)',
-  '--background: #2D2D2D',
+  '--app-background: black',
+  '--tile-color: red',
+  '--tile-shadow: 1px 1px 20px 20px #ff00005c',
+  '--tile-active: 1px 1px 20px 20px red',
 ];

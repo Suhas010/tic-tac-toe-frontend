@@ -1,13 +1,18 @@
 import React from 'react';
-import './App.css';
+import { ThemeProvider } from '../context/TheamContext';
+import GameContainer from '../game/gameContainer';
+import Footer from '../footer/footerComponent';
+import Header from '../header/headerComponent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-       
-      </header>
-    </div>
+    <ThemeProvider>
+        <Header />
+        <GameContainer/>
+        <footer>
+          <Footer/>
+        </footer>
+    </ThemeProvider>
   );
 }
 
