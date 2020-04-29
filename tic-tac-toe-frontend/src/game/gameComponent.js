@@ -6,19 +6,19 @@ const GameComponent = ({
 }) => {
   const { dark } = useContext(ThemeContext);
   
+  let i=0;
+  const renderTiles = () => [...Array(9)].map(() => {
+    return (
+      <div class="tile" data-source={i++} key={i}></div>
+    );
+  })
+
+
   return (
     <React.StrictMode>
       <div className="game-container">
         <div className="game" onClick={handleTileClick}>
-          <div class="tile" data-source="1"></div>
-          <div class="tile" data-source="2"></div>
-          <div class="tile" data-source="3"></div>
-          <div class="tile" data-source="4"></div>
-          <div class="tile" data-source="5"></div>
-          <div class="tile" data-source="6"></div>
-          <div class="tile" data-source="7"></div>
-          <div class="tile" data-source="8"></div>
-          <div class="tile" data-source="9"></div>
+          {renderTiles()}
         </div>
       </div>
     </React.StrictMode>
