@@ -1,3 +1,10 @@
+:root {
+  --app-background: black;
+  --tile-color: red;
+  --tile-shadow: 1px 1px 20px 20px #ff00005c ;
+  --tile-active: 1px 1px 20px 20px red;
+
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +12,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--app-background);
+  min-height: 100vh;
 }
 
 code {
