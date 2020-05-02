@@ -1,13 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Megrim&display=swap');
+
 :root {
   --app-background: black;
   --tile-color: red;
   --tile-shadow: 1px 1px 20px 20px #ff00005c ;
   --tile-active: 1px 1px 20px 20px red;
+  --item-color: red;
 
 }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Megrim', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
