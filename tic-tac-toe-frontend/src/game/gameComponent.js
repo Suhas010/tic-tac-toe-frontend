@@ -1,18 +1,20 @@
-import React, { useContext } from 'react';
-import ThemeContext from '../context/TheamContext';
+import React from 'react';
 
 const GameComponent = ({
-  handleTileClick
+  handleTileClick,
+  gameState
 }) => {
-  const { dark } = useContext(ThemeContext);
-  
-  let i=0;
-  const renderTiles = () => [...Array(9)].map(() => {
-    return (
-      <div class="tile" data-source={i++} key={i}></div>
-    );
-  })
-
+  const renderTiles = () => {
+    return gameState.map((row, i) => {
+      return row.map((col, j) => {
+        return (
+          <div class={`tile ${col.length ? 'filled' : ''}` } data-source={[i, j]} key={i}>
+            {col && (<span className="item" onClick={(e) => e.stopPropagation()}>{col}</span>)}
+          </div>
+        );
+      });
+    })
+  };
 
   return (
     <React.StrictMode>
