@@ -8,7 +8,7 @@ const GameComponent = ({
     return gameState.map((row, i) => {
       return row.map((col, j) => {
         return (
-          <div class={`tile ${col.length ? 'filled' : ''}` } data-source={[i, j]} key={i}>
+          <div className={`tile ${col.length ? 'filled' : ''}` } data-source={[i, j]} key={i+j}>
             {col && (<span className="item" onClick={(e) => e.stopPropagation()}>{col}</span>)}
           </div>
         );
