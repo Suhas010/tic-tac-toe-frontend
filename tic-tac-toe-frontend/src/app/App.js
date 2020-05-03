@@ -7,11 +7,16 @@ import Header from '../header/headerComponent';
 function App() {
   return (
     <ThemeProvider>
+        <div id="stars1"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+       <div className="main">
         <Header />
-        <GameContainer/>
-        <footer>
-          <Footer/>
-        </footer>
+          <GameContainer/>
+          <footer>
+            <Footer/>
+          </footer>
+       </div>
     </ThemeProvider>
   );
 }

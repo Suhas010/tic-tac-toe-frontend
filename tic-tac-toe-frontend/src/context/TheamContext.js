@@ -51,6 +51,9 @@ const lightTheme = [
   '--tile-color: #218186',
   '--tile-shadow: 1px 1px 20px 0px #64cbdc78',
   '--tile-active: 1px 1px 20px 10px #41dede',
+  '--title-color: black',
+  '--star-color: red',
+  '--back-grad: radial-gradient(#e4ff0000, #ecbc0d47, #58202014, #d8d20f1f)'
 ];
 
 const darkTheme = [
@@ -58,4 +61,7 @@ const darkTheme = [
   '--tile-color: red',
   '--tile-shadow: 1px 1px 20px 20px #ff00005c',
   '--tile-active: 1px 1px 20px 20px red',
+  '--title-color: white',
+  '--star-color: #FFF',
+  '--back-grad: radial-gradient(#171414a6, #00000094, #500b0b59, #61efdb3b)'
 ];
