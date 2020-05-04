@@ -6,10 +6,10 @@ const GameComponent = ({
 }) => {
   const renderTiles = () => {
     return gameState.map((row, i) => {
-      return row.map((col, j) => {
+      return row.map(({sign, won}, j) => {
         return (
-          <div className={`tile ${col.length ? 'filled' : ''}` } data-source={[i, j]} key={i+j}>
-            {col && (<span className="item" onClick={(e) => e.stopPropagation()}>{col}</span>)}
+          <div className={`tile ${sign.length ? 'filled' : ''}` } data-source={[i, j]} key={i+j}>
+            {sign && (<span className="item" onClick={(e) => e.stopPropagation()}>{sign}</span>)}
           </div>
         );
       });

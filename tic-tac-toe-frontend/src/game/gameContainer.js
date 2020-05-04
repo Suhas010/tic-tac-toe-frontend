@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import GameComponent from "./gameComponent";
 import "./game.css";
-const intialState =  () =>  [[[], [], []], [[], [], []], [[], [], []]];
+const intialState =  () =>  [[{sign: ""}, {sign: ""}, {sign: ""}], [{sign: ""}, {sign: ""}, {sign: ""}], [{sign: ""}, {sign: ""}, {sign: ""}]];
 const GameContainer = () => {
   const [state, setState] = useState({
     turn: false,
@@ -17,7 +17,7 @@ const GameContainer = () => {
   const calculateArtificialMove = (gameState) => {
     const i = getRandomInt(3);
     const j = getRandomInt(3);
-    if(gameState[i][j].length) {
+    if(gameState[i][j].sign.length) {
       return calculateArtificialMove(gameState);
     }
     return [i, j];
@@ -37,17 +37,37 @@ const GameContainer = () => {
     return outOfMove;
   };
 
+  const getPlayerName = (tile) => {
+    if(tile === "X") {
+      return localStorage.getItem("name");
+    }
+    return localStorage.getItem("player2name");
+  }
+
   const getWinner = (gameState) => {
-    if (gameState[0][0] === gameState[1][1] && gameState[1][1] === gameState[2][2]) {
-      return gameState[0][0];
-    } else if (gameState[0][2] === gameState[1][1] && gameState[1][1] === gameState[2][0]) {
-      return gameState[0][2];
+    console.log(gameState[0][0], "##")
+    if (gameState[0][0].sign === gameState[1][1].sign && gameState[1][1].sign === gameState[2][2].sign) {
+      gameState[0][0].won = true;
+      gameState[1][1].won = true;
+      gameState[2][2].won = true;
+      return getPlayerName(gameState[0][0].sign);
+    } else if (gameState[0][2].sign === gameState[1][1].sign && gameState[1][1].sign === gameState[2][0].sign) {
+      gameState[0][2].won = true;
+      gameState[1][1].won = true;
+      gameState[2][0].won = true;
+      return getPlayerName(gameState[0][2].sign);
     }
     for(let i=0; i<3; i++) {
-      if(gameState[i][0] === gameState[i][1] && gameState[i][1] === gameState[i][2]) {
-        return gameState[i][0];
-      } else if (gameState[0][i] === gameState[1][i] &&  gameState[1][i] === gameState[2][i]) {
-        return gameState[0][i];
+      if(gameState[i][0].sign === gameState[i][1].sign && gameState[i][1].sign === gameState[i][2].sign) {
+        gameState[i][0].won = true;
+        gameState[i][1].won = true;
+        gameState[i][2].won = true;
+        return getPlayerName(gameState[i][0].sign);
+      } else if (gameState[0][i].sign === gameState[1][i].sign &&  gameState[1][i].sign === gameState[2][i].sign) {
+        gameState[0][i].won = true;
+        gameState[1][i].won = true;
+        gameState[2][i].won = true;
+        return getPlayerName(gameState[0][i].sign);
       }
     }
     return false;
@@ -68,20 +88,25 @@ const GameContainer = () => {
     performArtificialMove();
   }, [state.turn])
 
+  useEffect(() => {
+
+  }, [])
 
 
   const handleTileClick = ({ target }, artificialMove = false, move) => {
     
     let player = state.turn ? 'O' : 'X';
     let [i, j] = artificialMove ? move : target.getAttribute("data-source").split(',');
-    let tempEntries = [...state.entries];
+    let tempEntries = state.entries;
     if(tempEntries[i][j].length) {
       return;
     }
-    tempEntries[i][j] = player;
+    tempEntries[i][j] = {
+      sign: player,
+      won: false
+    };
     let winner = getWinner(tempEntries);
     if (winner) {
-      console.log("object")
       tempEntries = intialState();
       // console.log(tempEntries, "ten")
     }
@@ -95,10 +120,13 @@ const GameContainer = () => {
   }
 
   return (
-    <GameComponent
-      handleTileClick={handleTileClick}
-      gameState={state.entries}
-    />
+    <>
+      {/* {state.won && ()} */}
+      <GameComponent
+        handleTileClick={handleTileClick}
+        gameState={state.entries}
+      />
+    </>
     );
 };
 

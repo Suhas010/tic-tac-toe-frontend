@@ -9,6 +9,7 @@
   color: var(--title-color);
   font-size: 3rem;
   font-weight: 900;
+  padding-left: 4%;
   text-shadow: 0px 1px 0px #fffefe,
                4px 4px 4px #c5cad69e,
                0px 1px 0px #e2b40e,
