@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react';
 
 const ThemeContext = React.createContext({
-  dark: false,
+  dark: true,
   toggle: () => {},
 });
 
