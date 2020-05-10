@@ -9,6 +9,7 @@
   --title-color: white;
   --star-color: #FFF;
   --back-grad: radial-gradient(#171414a6, #00000094, #500b0b59, #61efdb3b);
+  --won-shadow: white;
 
 }
 body {

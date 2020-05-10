@@ -25,6 +25,25 @@
 .filled {
   opacity: 0.7;
 }
+.filled, .item {
+  -webkit-transition: opacity .1s;
+  -moz-transition: opacity .1s;
+  transition: opacity .1s;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  -webkit-animation: appear .2s cubic-bezier(0.5,1.8,0.1,1.1);
+  -moz-animation: appear .2s cubic-bezier(0.5,1.8,0.1,1.1);
+  animation: appear .2s cubic-bezier(0.5,1.8,0.1,1.1);
+  will-change: tramsforms;
+}
+.won {
+  border: 2px solid var(--won-shadow);
+  box-shadow: 1px 1px 14px 4px var(--won-shadow);
+}
+.won.item {
+  color: green !important;
+}
+
 .item {
   font-weight: bold;
   font-size: 4rem;
