@@ -7,7 +7,15 @@ const Footer = () => {
   }
   return(
     <div className="footer">
-      <input type="text" onChange={handleNameChange} placeholder="Player name" defaultValue={localStorage.getItem("name")}/>
+      <div>
+        <span className="fa fa-user"></span>
+        <input
+          type="text"
+          onChange={handleNameChange}
+          placeholder="Player name"
+          defaultValue={localStorage.getItem("name")}
+        />
+      </div>
     </div>
   );
 }
